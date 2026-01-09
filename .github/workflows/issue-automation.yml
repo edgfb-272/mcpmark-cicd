@@ -23,6 +23,7 @@ jobs:
             const issueNumber = issue.number;
             const owner = context.repo.owner;
             const repo = context.repo.repo;
+            const action = context.payload.action;
 
             const title = (issue.title || '').toLowerCase();
             const body = (issue.body || '').toLowerCase();
@@ -65,8 +66,8 @@ jobs:
               }
             }
 
-            // Add needs-triage to all issues
-            if (!currentLabels.includes('needs-triage')) {
+            // Add needs-triage to newly opened issues only
+            if (action === 'opened' && !currentLabels.includes('needs-triage')) {
               labelsToAdd.add('needs-triage');
             }
 
@@ -258,7 +259,20 @@ jobs:
               core.warning(`Failed to determine if this is first issue for ${author}: ${error.message}`);
             }
 
-            const currentLabels = (issue.labels || []).map(l => typeof l === 'string' ? l : l.name);
+            // Always fetch latest labels/state for the issue to reflect prior jobs
+            let currentLabels = [];
+            try {
+              const { data: latestIssue } = await github.rest.issues.get({
+                owner,
+                repo,
+                issue_number: issueNumber,
+              });
+              currentLabels = (latestIssue.labels || []).map(l => typeof l === 'string' ? l : l.name);
+            } catch (error) {
+              core.warning(`Failed to fetch latest issue data: ${error.message}`);
+              currentLabels = (issue.labels || []).map(l => typeof l === 'string' ? l : l.name);
+            }
+
             const labelsToAdd = new Set();
             const labelsToRemove = new Set();
 
