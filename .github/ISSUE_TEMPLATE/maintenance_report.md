@@ -1,22 +1,21 @@
 ---
-name: Maintenance Report
-about: Report a maintenance or housekeeping task
-title: "Maintenance: [Brief description]"
-labels: maintenance
-assignees:
-
+name: Maintenance task
+about: Report or request a maintenance / housekeeping task
+labels: maintenance, priority-medium, needs-triage
 ---
 
-# Maintenance Report
-
 ## Description
-A clear and concise description of the maintenance task.
 
-## Task Details
-What needs to be done? Provide specific details.
+Describe the maintenance task that needs to be done.
 
-## Expected Outcome
-What is the expected outcome after completing this maintenance task?
+## Impact
+
+What is the impact if this maintenance is not performed?
+
+## Proposed Approach
+
+How do you suggest we perform this maintenance?
 
 ## Additional Context
-Add any other context or information about the maintenance task here.
+
+Add any other context or information here.

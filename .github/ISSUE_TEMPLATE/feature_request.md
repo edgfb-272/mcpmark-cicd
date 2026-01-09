@@ -1,25 +1,25 @@
 ---
-name: Feature Request
-about: Suggest an idea for this project
-title: "Feature: [Brief description]"
-labels: enhancement
-assignees:
-
+name: Feature request / Epic
+about: Suggest a new feature or epic
+labels: enhancement, epic, priority-medium, needs-triage
 ---
 
-# Feature Request
+## Summary
 
-## Description
-A clear and concise description of the feature you'd like to see.
+A clear and concise description of the feature or epic.
 
-## Problem to Solve
+## Problem Statement
+
 What problem does this feature solve?
 
 ## Proposed Solution
-A clear and concise description of how you think this feature should work.
+
+Describe the solution you'd like.
 
 ## Alternatives Considered
-A clear and concise description of any alternative solutions or features you've considered.
+
+Describe any alternative solutions you've considered.
 
 ## Additional Context
+
 Add any other context or screenshots about the feature request here.
